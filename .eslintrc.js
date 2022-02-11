@@ -52,6 +52,9 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', {
       optionalDependencies: ['test/unit/index.js'],
     }],
+    "import/no-import-module-exports": ["error", {
+      "exceptions": ["**/*/*.ts"]
+    }],
     // disallow reassignment of function parameters
     // disallow parameter object manipulation except for specific exclusions
     'no-param-reassign': ['error', {
