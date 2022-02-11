@@ -6,16 +6,22 @@
   "configurations": [
     {
       "type": "pwa-node",
-      "request": "launch",
-      "name": "Launch Program",
+      "request": "attach",
+      "name": "Debug Google Cloud Function",
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/dist/index.js",
+      "sourceMaps": true,
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**"
+      ],
       "outFiles": [
         "${workspaceFolder}/**/*.js"
       ],
-      "preLaunchTask": "tsc: build"
+      "preLaunchTask": "debug",
+      "continueOnAttach": true,
+      "postDebugTask": "detachkill"
     }
   ]
 }

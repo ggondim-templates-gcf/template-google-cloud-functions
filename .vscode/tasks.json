@@ -6,13 +6,93 @@
       "script": "lint",
       "problemMatcher": ["$eslint-stylish"],
       "label": "npm: lint",
-      "detail": "eslint"
+      "detail": "eslint",
+      "presentation": {
+        "echo": false,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true,
+        "close": true,
+        "revealProblems": "onProblem"
+      }
     },
     {
       "type": "npm",
       "label": "tsc: build",
       "script": "ts:build",
       "problemMatcher": "$tsc",
+      "presentation": {
+        "echo": false,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true,
+        "close": true,
+        "revealProblems": "onProblem"
+      }
+    },
+    {
+      "isBackground": true,
+      "label": "debug",
+      "command": "npm",
+      "args": ["run", "debug"],
+      "problemMatcher": {
+        "pattern": [
+          {
+            "regexp": ".",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": ".",
+        },
+      },
+      "presentation": {
+        "echo": false,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": true,
+        "close": true
+      }
+    },
+    {
+      "label": "detachkill",
+      "type": "shell",
+      "command": "kill -15 $(lsof -t -i:9229)",
+      "isBackground": true,
+      "presentation": {
+        "echo": false,
+        "reveal": "never",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true,
+        "close": true
+      },
+      "problemMatcher": {
+        "pattern": [
+          {
+            "regexp": ".",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": ".",
+        }
+      }
     }
   ]
 }
