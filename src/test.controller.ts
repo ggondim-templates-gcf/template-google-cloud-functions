@@ -1,6 +1,4 @@
-import {
-  Request, Response, Application,
-} from 'express';
+import { Request, Response, Application } from 'express';
 import asyncHandler from 'express-async-handler';
 
 // eslint-disable-next-line @typescript-eslint/require-await
