@@ -93,3 +93,10 @@ You can add endpoint-level middlewares just as any Express.js API, specifying an
 ```typescript
 export default (app: Application) => app.get('/route', [ asyncHandler(middleware), asyncHandler(controller ]));
 ```
+
+## Roadmap
+- [ ] Google Cloud Build deploy script
+- [ ] Common middlewares
+- [ ] 404 and error responses
+- [ ] logging (bugsnag with multer fallback)
+- [ ] OpenAPI
