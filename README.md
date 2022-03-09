@@ -95,12 +95,12 @@ export default (app: Application) => app.get('/route', [ asyncHandler(middleware
 ```
 
 ## Roadmap
-- [ ] GitHub actions deploy script
-- [ ] Common middlewares
-- [ ] 404 and error responses
-- [ ] logging (bugsnag with morgan fallback)
-- [ ] OpenAPI
-- [ ] CORS
-- [ ] Security middlewares
+- [X] GitHub actions deploy script
+- [X] Common middlewares
+- [X] 404 and error responses
+- [X] logging (bugsnag with morgan fallback)
+- [X] OpenAPI
+- [X] CORS
+- [X] Security middlewares
 - [ ] Environment variables
 - [X] MongoDB connection reuse

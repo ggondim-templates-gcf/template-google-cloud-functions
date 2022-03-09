@@ -35,8 +35,6 @@ module.exports = {
     "console": process.env.NODE_ENV === 'development' ? 'readonly' : 'off',
   },
   rules: {
-    "@typescript-eslint/no-unsafe-member-access": "warn",
-    "@typescript-eslint/no-unsafe-call": "warn",
     strict: 'off',
     'prefer-destructuring': 'off',
     'class-methods-use-this': 'off',

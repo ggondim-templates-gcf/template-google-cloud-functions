@@ -12,6 +12,7 @@ import {
   mongoDbStartMiddleware,
   registerMongoGracefulEnding,
 } from './middlewares/mongodb.middlewares';
+import openapi from './middlewares/openapi.middlewares';
 
 type Express = core.Express;
 // eslint-disable-next-line max-len
@@ -21,12 +22,15 @@ const app: Express = express() as Express;
 /* PING */ pingMiddleware(app);
 /* LOGGING */ const loggingPostCascade = logging(app);
 /* SECURITY */ security(app);
-/* MONGODB */ mongoDbStartMiddleware(app, 'CONNECTION_STRING');
+/* MONGODB */ mongoDbStartMiddleware(app, process.env.MONGODB_URI);
 
 // === Dynamic controller registration
 const paths = globSync('**/*.controller.js', { cwd: 'dist' });
-const controllers = paths.map(path => require(`./${path}`).default);
-controllers.forEach(controller => controller(app));
+const controllers = paths.map(path => require(`./${path}`));
+controllers.forEach(controller => controller.default(app));
+
+// === OpenAPI Docs
+openapi(app, controllers, 'SWAGGER_UI_URL');
 
 // === Post cascade middlewares
 /* LOGGING */ loggingPostCascade();

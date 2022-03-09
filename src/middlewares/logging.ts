@@ -19,7 +19,7 @@ export default (app: Application) => {
       const reqId = uuid();
       req.bugsnag?.addMetadata('request', { id: reqId });
     });
-  } else if (NODE_ENV === 'development' || NODE_ENV === 'local') {
+  } else {
     app.use(morgan);
   }
 
@@ -27,18 +27,23 @@ export default (app: Application) => {
     // post middleware cascade
     if (NODE_ENV === 'production') {
       app.use(bugsnag.errorHandler);
-      app.use((err, req: Request, res: Response) => {
-        if (err) {
-          const reqId = req.bugsnag
+    }
+    app.use((err, req: Request, res: Response) => {
+      if (err) {
+        let reqId = '';
+        if (NODE_ENV === 'production') {
+          reqId = req.bugsnag
             ? req.bugsnag.getMetadata('request', 'id') as string
             : 'unknown';
-          res.status(500).json({
-            error: 500,
-            message: 'Internal server error',
-            reqId,
-          });
+        } else {
+          console.log(err);
         }
-      });
-    }
+        res.status(500).json({
+          error: 500,
+          message: 'Internal server error',
+          reqId,
+        });
+      }
+    });
   };
 };
