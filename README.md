@@ -95,8 +95,12 @@ export default (app: Application) => app.get('/route', [ asyncHandler(middleware
 ```
 
 ## Roadmap
-- [ ] Google Cloud Build deploy script
+- [ ] GitHub actions deploy script
 - [ ] Common middlewares
 - [ ] 404 and error responses
-- [ ] logging (bugsnag with multer fallback)
+- [ ] logging (bugsnag with morgan fallback)
 - [ ] OpenAPI
+- [ ] CORS
+- [ ] Security middlewares
+- [ ] Environment variables
+- [X] MongoDB connection reuse

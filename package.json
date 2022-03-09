@@ -40,9 +40,11 @@
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
     "@google-cloud/functions-framework": "^2.1.1",
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/glob": "^7.2.0",
     "@types/node": "^17.0.14",
+    "@types/uuid-with-v6": "^1.1.0",
     "@typescript-eslint/eslint-plugin": "^5.10.2",
     "@typescript-eslint/parser": "^5.10.2",
     "eslint": "^8.8.0",
@@ -56,8 +58,14 @@
     "typescript": "^4.5.5"
   },
   "dependencies": {
+    "@bugsnag/js": "^7.16.1",
+    "@bugsnag/plugin-express": "^7.16.1",
+    "cors": "^2.8.5",
     "express": "^4.17.2",
     "express-async-handler": "^1.2.0",
-    "glob": "^7.2.0"
+    "glob": "^7.2.0",
+    "mongodb": "^4.4.1",
+    "morgan": "^1.10.0",
+    "uuid-with-v6": "^2.0.0"
   }
 }
