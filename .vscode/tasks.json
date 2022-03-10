@@ -61,7 +61,7 @@
         "panel": "shared",
         "showReuseMessage": true,
         "clear": true,
-        "close": true
+        "close": false
       }
     },
     {

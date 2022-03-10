@@ -5,10 +5,10 @@
   "exclude": [
     "dist",
     "node_modules",
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "package.json"
   ],
   "compilerOptions": {
-    "resolveJsonModule": true,
     "esModuleInterop": true,
     "noImplicitAny": false,
     "outDir": "./dist",
