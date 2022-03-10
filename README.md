@@ -7,12 +7,16 @@
 This template inherits conventions from [template-general](https://github.com/ggondim/template-general) -> [template-javascript](https://github.com/ggondim-templates-javascript/template-javascript) -> [template-typescript](https://github.com/ggondim-templates-typescript/template-typescript).
 
 ## Features
+- **Debug local Google Cloud Functions with Typescript in vscode**
 - Monolithic API using Express 4
 - Express `async` controllers
 - Automatic controller detection, no route files needed
-- Typescript 4.5 linting
-- Local test with Google Functions Framework CLI
-- Debug Typesript sources in vscode + Functions Framework
+- Typescript 4.6 linting
+- OpenAPI definitions per controller, with automatic merging for the entire API
+- Bugsnag logging in production, Morgan in development
+- MongoDB connection injection through middleware, closing after process end
+- Security middlewares (XSS, CORS, frames, etc.)
+- Environment variables with @enx/env
 - Conventional Commits and many other conventions
 
 ## Conventions
@@ -44,7 +48,6 @@ This template extends the following ESLint configurations plus manually override
 - airbnb-base
 - airbnb-typescript/base
 - @typescript-eslint/recommended
-- @typescript-eslint/recommended-requiring-type-checking
 - eslint-comments/recommended
 
 See all [.eslintrc.js](.eslintrc.js) rules.
@@ -93,14 +96,3 @@ You can add endpoint-level middlewares just as any Express.js API, specifying an
 ```typescript
 export default (app: Application) => app.get('/route', [ asyncHandler(middleware), asyncHandler(controller ]));
 ```
-
-## Roadmap
-- [X] GitHub actions deploy script
-- [X] Common middlewares
-- [X] 404 and error responses
-- [X] logging (bugsnag with morgan fallback)
-- [X] OpenAPI
-- [X] CORS
-- [X] Security middlewares
-- [ ] Environment variables
-- [X] MongoDB connection reuse
