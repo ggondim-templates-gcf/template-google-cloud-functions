@@ -71,7 +71,7 @@ module.exports = {
     'no-alert': 'off',
     'no-underscore-dangle': 'off',
     'import/prefer-default-export': 'off',
-    'import/extensions': ['warn', 'always'],
+    'import/extensions': ['warn', 'always', { ts: 'never' }],
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
     radix: 'off',
