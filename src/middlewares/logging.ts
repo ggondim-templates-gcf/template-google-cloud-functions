@@ -21,6 +21,7 @@ export default (app: Application) => {
     app.use((req, res, next) => {
       const reqId = uuid();
       req.bugsnag?.addMetadata('request', { id: reqId });
+      res.setHeader('X-Request-Id', reqId);
       next();
     });
   } else {
