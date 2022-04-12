@@ -10,16 +10,16 @@
     "docs/"
   ],
   "scripts": {
-    "debug": "npm run ts:build; npm start",
+    "debug": "npm run ts:build && npm start",
     "start": "export NODE_ENV=development; node --inspect-brk node_modules/.bin/functions-framework --source=dist --target=func",
     "prepare": "husky install",
     "release-rc": "npm run release -- --prerelease rc",
     "release": "npx standard-version",
     "hook:commit-msg": "npx --no -- commitlint --edit $1",
-    "hook:pre-commit": "npm run lint; npm run ts:lint",
+    "hook:pre-commit": "npm run lint && npm run ts:lint",
     "lint": "eslint ./src/*.{ts,js} --format stylish",
     "ts:lint": "tsc --noEmit",
-    "ts:build": "rimraf dist; mkdir dist; tsc"
+    "ts:build": "rimraf dist && mkdir dist && tsc"
   },
   "repository": {
     "type": "git",

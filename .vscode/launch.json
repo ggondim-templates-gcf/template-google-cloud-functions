@@ -20,6 +20,7 @@
         "${workspaceFolder}/**/*.js"
       ],
       "preLaunchTask": "debug",
+      "timeout": 20000,
       "continueOnAttach": true,
       "postDebugTask": "detachkill"
     }

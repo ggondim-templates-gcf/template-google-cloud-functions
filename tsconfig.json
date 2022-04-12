@@ -15,7 +15,7 @@
     "declaration": true,
     "inlineSourceMap": true,
     "noEmitOnError": true,
-    "removeComments": false,
+    "removeComments": true,
     "module": "CommonJS",
     "moduleResolution": "Node",
     "lib": [

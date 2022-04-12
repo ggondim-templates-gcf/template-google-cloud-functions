@@ -1,0 +1,32 @@
+name: Deploy Cloud Function Development
+on:
+  push:
+    branches: ['production']
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: 'production'
+    steps:
+    - uses: 'actions/checkout@v2'
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v0'
+      with:
+        credentials_json: '${{ secrets.gcp_credentials }}'
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+    - run: npm install
+    - run: npm run ts:build
+    - name: deploy cloud function
+      id: deploy
+      uses: google-github-actions/deploy-cloud-functions@main
+      with:
+        name: '${{ secrets.gcp_function_name}}'
+        runtime: '${{ secrets.gcp_function_node_version }}'
+        project_id: '${{ secrets.gcp_project_id }}'
+        entry_point: func
+        region: '${{ secrets.gcp_function_region }}'
+        vpc_connector: '${{ secrets.gcp_vcp_connector }}'
+        env_vars: 'NODE_ENV=PRODUCTION'
+    - name: Setting Permission
+      run: gcloud alpha functions add-iam-policy-binding '${{ secrets.gcp_function_name}}' --region='${{ secrets.gcp_function_region }}' --member=allUsers --role=roles/cloudfunctions.invoker

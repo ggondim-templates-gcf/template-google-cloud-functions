@@ -19,7 +19,9 @@ let client: MongoClient | null = null;
 async function getOrCreateClient(connectionString: string) {
   if (client === null) {
     console.log(chalk.yellow('  Opening MongoDB connection...'));
-    client = await MongoClient.connect(connectionString);
+    client = await MongoClient.connect(connectionString, {
+      keepAlive: true,
+    });
     console.log(chalk.green(`  Connected to ${connectionString}`));
   }
   return client;
